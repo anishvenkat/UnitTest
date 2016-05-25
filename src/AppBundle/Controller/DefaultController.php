@@ -84,7 +84,6 @@ class DefaultController extends Controller
 
           $em->persist($product); // tells Doctrine you want to (eventually) save the Product (no queries yet)
 
-          file_put_contents('Test.log',$i."\n",8);
 
         }
         $em->flush();
