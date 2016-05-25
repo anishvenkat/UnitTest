@@ -1,9 +1,9 @@
 machine:
   php:
-    version: 7.0
+    version: 7.0.4
 
 dependencies:
-  
+
   override:
     - cp app/config/parameters.yml.dist app/config/parameters.yml
     - composer self-update
@@ -11,3 +11,8 @@ dependencies:
     - bin/console doctrine:database:create
     - bin/console doctrine:schema:update --force
     - phpunit -c phpunit.xml.dist
+
+test:
+  override:
+    - mkdir -p $CIRCLE_TEST_REPORTS/phpunit
+    - phpunit --log-junit $CIRCLE_TEST_REPORTS/phpunit/junit.xml tests
