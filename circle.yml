@@ -1,14 +1,15 @@
 machine:
   php:
-    version: 7.0.4
+    version: 7.0.3
 
 dependencies:
-
   override:
+    - curl -s https://packagecloud.io/install/repositories/circleci/trusty/script.deb.sh | sudo bash
+    - sudo apt-get install circleci-php-7.0.3=3
     - cp app/config/parameters.yml.dist app/config/parameters.yml
     - sudo composer self-update
     - sudo composer install
-    - bin/console doctrine:database:create
+    - sudo composer install
     - bin/console doctrine:schema:update --force
     - phpunit -c phpunit.xml.dist
 
