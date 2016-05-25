@@ -10,5 +10,5 @@ services:
 before_script:
     - cp app/config/parameters.yml.dist app/config/parameters.yml
     - composer self-update
-    - composer install --dev --no-interaction --prefer-source
-    - app/console doctrine:database:create --env=test --no-interaction --quiet
+    - composer install
+    - bin/console doctrine:database:create
